@@ -78,11 +78,7 @@ class Login extends Component {
                     <input type="text" name="user_username" placeholder="Username"
                       style={{ width: 256, }}
                       value={this.state.user_username}
-                      onChange={(e) => this.setState({
-                        user_username: e.target.value
-                      }, () => {
-                        console.log("setState user_username : ", this.state.user_username);
-                      })} />
+                      onChange={(e) => this.setState({ user_username: e.target.value})} />
                   </div>
                 </div>
                 <br />
