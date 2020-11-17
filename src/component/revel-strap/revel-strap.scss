@@ -1,0 +1,47 @@
+.ant-picker {
+    height: calc(1.5em + 0.75rem + 2px);
+}
+.ant-table-filter-trigger-icon {
+    position: absolute;
+    top: calc(50% - 0.5em);
+    left: calc(50% - 0.5em);
+}
+
+.ant-select-selector {
+    border-radius: 4px !important;
+    height: calc(1.5em + 0.75rem + 2px) !important;
+}
+.ant-select-selection-placeholder {
+    margin: auto;
+}
+.ant-select-selection-item {
+    margin: auto;
+}
+
+.ant-select-full-width {
+    width: 100%;
+}
+.ant-select-multiple .ant-select-selection-item {
+    margin: 0;
+}
+
+.rbt-aux {
+    align-items: center;
+    display: flex;
+    bottom: 0;
+    justify-content: center;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 34px;
+}
+.rbt-menu.dropdown-menu {
+    border: unset;
+    box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+.rbt-menu .dropdown-item {
+    border-bottom: unset;
+    color: rgba(0, 0, 0, 0.65);
+    padding: 5px 12px;
+}

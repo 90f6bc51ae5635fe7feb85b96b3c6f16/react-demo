@@ -1,0 +1,39 @@
+.test {
+    background-color: red;
+}
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -200px;
+}
+#wrapper.toggled #page-content-wrapper {
+    margin-left: 50px;
+}
+
+#page-content-wrapper {
+    min-width: 0;
+    margin-top: 19px;
+    width: 100%;
+    margin-left: 250px;
+}
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -200px;
+}
+#wrapper.toggled .sidebar-manu-lsit-text {
+    display: none;
+}
+#wrapper.toggled .list-group-flush .list-group-item {
+    text-align: right;
+    padding-right: 0px;
+}
+#wrapper.toggled #page-content-wrapper {
+    margin-left: 50px;
+}
+#wrapper.toggled .img-logo {
+    height: 15px !important;
+}
+.navbar-nav .dropdown-menu {
+    position: absolute;
+    will-change: transform;
+    top: 0px;
+    left: 0px;
+    transform: translate3d(-40px, 40px, 0px);
+}
