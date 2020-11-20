@@ -1,6 +1,8 @@
-import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import routes from '../routes';
+import React from 'react'
+import { Redirect, Route, Switch } from 'react-router-dom'
+
+import routes from '../routes'
+
 const HeaderLayout = React.lazy(() => import('./HeaderLayout'))
 const MenuLayout = React.lazy(() => import('./MenuLayout'))
 const FooterLayout = React.lazy(() => import('./FooterLayout'))
@@ -10,41 +12,36 @@ class DefaultLayout extends React.Component {
     super(props)
     this.state = {
       toggled: true,
+      _LOGIN_TOKEN: [],
+      _PERMISSION_TOKEN: [],
     }
   }
 
-  _signOut(e) {
-    e.preventDefault()
-    localStorage.clear();
-    window.location.reload()
-  }
-  _showMenu(e) {
-    e.preventDefault();
+  componentDidMount() {
     this.setState({
-      toggled: !this.state.toggled
+      _LOGIN_TOKEN: [],
+      _PERMISSION_TOKEN: [],
     })
   }
+
+  _onLogout(e) {
+    e.preventDefault()
+
+    localStorage.clear()
+    window.location.reload()
+  }
+
   render() {
+    const { _LOGIN_TOKEN, _PERMISSION_TOKEN } = this.state
+
     return (
       <div className="app">
-        <HeaderLayout
-          onLogout={(e) => this._signOut(e)}
-          showMenu={(e) => this._showMenu(e)}
-        />
+        <HeaderLayout onLogout={(e) => this._onLogout(e)} showMenu={(e) => this.setState({ toggled: !this.state.toggled })} />
         <div className={"d-flex " + (this.state.toggled ? "" : "toggled")} id="wrapper">
-          <div id="sidebar-wrapper">
-            <div className="sidebar-manu-top">
-              <div className="sidebar-manu-top-text">
-                <div style={{ fontSize: '1.2rem' }}>ERP</div>
-                <div>Enterprise Resource Planning</div>
-              </div>
-            </div>
-            <MenuLayout {...this.props} />
-          </div>
+          <MenuLayout {...this.props} _LOGIN_TOKEN={_LOGIN_TOKEN} _PERMISSION_TOKEN={_PERMISSION_TOKEN} />
           <div id="page-content-wrapper">
             <div className="container-fluid">
               <main className="main">
-
                 <React.Suspense fallback={null}>
                   <Switch>
                     {routes.map((route, idx) => {
@@ -54,16 +51,13 @@ class DefaultLayout extends React.Component {
                           path={route.path}
                           exact={route.exact}
                           name={route.name}
-                          render={props => (
-                            <route.component {...props} />
-                          )} 
-                          />
-                      ) : (null);
+                          render={props => (<route.component {...props} />)}
+                        />
+                      ) : null
                     })}
                     <Redirect from="/" to="/user" />
                   </Switch>
                 </React.Suspense>
-
               </main>
             </div>
           </div>
