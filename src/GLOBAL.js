@@ -1,4 +1,4 @@
-export default {
+const Global = {
 	BASE_URL: {
 		URL: 'http://localhost:4001/',
 	},
@@ -7,3 +7,4 @@ export default {
 		'Content-Type': 'application/json',
 	},
 }
+export default Global

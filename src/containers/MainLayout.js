@@ -33,7 +33,6 @@ class DefaultLayout extends React.Component {
 
   render() {
     const { _LOGIN_TOKEN, _PERMISSION_TOKEN } = this.state
-
     return (
       <div className="app">
         <HeaderLayout onLogout={(e) => this._onLogout(e)} showMenu={(e) => this.setState({ toggled: !this.state.toggled })} />

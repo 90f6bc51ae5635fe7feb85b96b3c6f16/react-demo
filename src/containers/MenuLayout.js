@@ -1,10 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-// import NotificationModel from '../models/NotificationModel'
-
-// const notification_model = new NotificationModel()
-
 class MenuLayout extends React.Component {
   constructor(props) {
     super(props)
@@ -41,46 +36,20 @@ class MenuLayout extends React.Component {
   }
 
   async _generateAccessMenu() {
-    // const notifications = await notification_model.getNotificationBy()
-
-    const permission = []
-    if (this.props._PERMISSION_TOKEN) {
-      this.props._PERMISSION_TOKEN.forEach(item => {
-        permission[item.menu_name_en] = { permission_view: item.permission_view }
-      })
-    }
-
     const access_menu = {
       master_data: [],
       production: [],
     }
-
-    // if (permission.production && permission.production.permission_view) {
-    //   access_menu.production.push({
-    //     name: 'การผลิต',
-    //     url: '/production',
-    //     icon: 'fa fa-file-o',
-    //     badge: {
-    //       variant: 'info',
-    //       text: productions && productions.length ? productions.length : '',
-    //     },
-    //   })
-    // }
-
-    if (permission.user && permission.user.permission_view) {
-      access_menu.master_data.push({
-        name: 'พนักงาน',
-        url: '/user',
-        icon: 'fa fa-id-card-o',
-      })
-    }
-    if (permission.customer && permission.customer.permission_view) {
-      access_menu.master_data.push({
-        name: 'ลูกค้า',
-        url: '/customer',
-        icon: 'fa fa-user-circle-o',
-      })
-    }
+    access_menu.master_data.push({
+      name: 'พนักงาน',
+      url: '/user',
+      icon: 'fa fa-id-card-o',
+    })
+    access_menu.master_data.push({
+      name: 'ลูกค้า',
+      url: '/customer',
+      icon: 'fa fa-user-circle-o',
+    })
 
     return access_menu
   }
