@@ -12,7 +12,7 @@ class User extends Component {
           <Switch>
             <Route exact path="/user" name="Login Page" render={props => <View {...props} />} />
             <Route exact path="/user/insert" name="Login Page" render={props => <Insert {...props} />} />
-            <Route exact path="/user/update/:user_id" name="Login Page" render={props => <Update {...props} />} />
+            <Route exact path="/user/update/:user_code" name="Login Page" render={props => <Update {...props} />} />
           </Switch>
         </React.Suspense>
       </HashRouter>

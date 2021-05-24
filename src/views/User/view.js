@@ -41,7 +41,7 @@ class UserView extends Component {
         this.setState({
           loading: true,
         }, async () => {
-          user_model.deleteUserByID({ user_id: row.user_id }).then(res => {
+          user_model.deleteUserByCode({ user_code: row.user_code }).then(res => {
             if (res.query_result) {
               swal.fire('Success Deleted!', '', 'success')
               this._fetchData()
@@ -78,7 +78,7 @@ class UserView extends Component {
               showRowNo={true}
               dataSource={this.state.user_list.data}
               dataTotal={this.state.user_list.total}
-              rowKey='user_id'
+              rowKey='user_code'
               columns={[
                 {
                   title: 'ชื่อย่อ',
@@ -104,7 +104,7 @@ class UserView extends Component {
                   render: (cell) => {
                     return (
                       <div>
-                        <Link key="update" to={`/user/update/${cell.user_id}`} title="แก้ไขรายการ" style={{ color: '#337ab7', }}>
+                        <Link key="update" to={`/user/update/${cell.user_code}`} title="แก้ไขรายการ" style={{ color: '#337ab7', }}>
                           <button type="button" className="btn btn-primary btn-row-sm">
                             <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </button>
