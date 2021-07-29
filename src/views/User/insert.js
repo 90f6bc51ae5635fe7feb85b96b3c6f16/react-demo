@@ -21,13 +21,13 @@ class Insert extends Component {
       user_lastname: '',
       user_username: '',
       user_password: '',
-      user_type_id: '',
+      user_type_code: '',
       user_active: '0',
       username_validate: {
         value: '',
-        status: '',
+        status: 'INVALID',
         class: '',
-        text: '',
+        text: 'Please input Username',
       },
       user_image: {
         src: GLOBAL.BASE_URL.URL + "user-default.png",
@@ -70,7 +70,7 @@ class Insert extends Component {
         user_lastname: this.state.user_lastname,
         user_username: this.state.user_username,
         user_password: this.state.user_password,
-        user_type_id: this.state.user_type_id,
+        user_type_code: this.state.user_type_code,
         user_active: this.state.user_active,
         user_image: await file_service.updateFile({ src: this.state.user_image, upload_path: "users/", }),
       });
@@ -127,7 +127,7 @@ class Insert extends Component {
         icon: "warning",
         button: "Close",
       });
-    } else if (this.state.user_type_id === '') {
+    } else if (this.state.user_type_code === '') {
       swal.fire({
         title: "Warning!",
         text: "Please Enter Your Type",
@@ -166,7 +166,7 @@ class Insert extends Component {
 
   _handleImageChange(img_name, e) {
     if (e.target.files.length) {
-      let file = new File([e.target.files[0]], e.target.files[0].name, {type: e.target.files[0].type, });
+      let file = new File([e.target.files[0]], e.target.files[0].name, { type: e.target.files[0].type, });
       if (file !== undefined) {
         let reader = new FileReader();
         reader.onloadend = () => {
@@ -189,7 +189,7 @@ class Insert extends Component {
   render() {
     const user_types = [{ label: '- ไม่ระบุ -', value: '' },
     ...this.state.user_types.map((item, idx) => ({
-      index: idx, label: item.user_type_name, value: item.user_type_id,
+      index: idx, label: item.user_type_name, value: item.user_type_code,
     }))
     ]
     const user_active = [
@@ -260,8 +260,8 @@ class Insert extends Component {
                   <label>สิทธิ์การใช้งาน<font color="#F00"><b> *</b></font></label>
                   <Select
                     options={user_types}
-                    value={this.state.user_type_id}
-                    onChange={(e) => this.setState({ user_type_id: e })}
+                    value={this.state.user_type_code}
+                    onChange={(e) => this.setState({ user_type_code: e })}
                   />
                 </div>
                 <div className="col-lg-6">

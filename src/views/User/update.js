@@ -21,7 +21,7 @@ class Update extends Component {
       user_lastname: '',
       user_username: '',
       user_password: '',
-      user_type_id: '',
+      user_type_code: '',
       user_active: '0',
       username_validate: {
         value: '',
@@ -61,7 +61,7 @@ class Update extends Component {
           user_lastname,
           user_username,
           user_password,
-          user_type_id,
+          user_type_code,
           user_active,
           user_image,
         } = users.data[0]
@@ -74,7 +74,7 @@ class Update extends Component {
           user_lastname: user_lastname,
           user_username: user_username,
           user_password: user_password,
-          user_type_id: user_type_id,
+          user_type_code: user_type_code,
           user_active: user_active,
           user_image: {
             src: "",
@@ -98,7 +98,7 @@ class Update extends Component {
         user_lastname: this.state.user_lastname,
         user_username: this.state.user_username,
         user_password: this.state.user_password,
-        user_type_id: this.state.user_type_id,
+        user_type_code: this.state.user_type_code,
         user_active: this.state.user_active,
         user_image: await file_service.updateFile({ src: this.state.user_image, upload_path: "users/", }),
       });
@@ -155,7 +155,7 @@ class Update extends Component {
         icon: "warning",
         button: "Close",
       });
-    } else if (this.state.user_type_id === '') {
+    } else if (this.state.user_type_code === '') {
       swal.fire({
         title: "Warning!",
         text: "Please Enter Your Type",
@@ -216,7 +216,7 @@ class Update extends Component {
   }
   render() {
     const user_types = [{ label: '- ไม่ระบุ -', value: '' }, ...this.state.user_types.map((item, idx) => ({
-      index: idx, label: item.user_type_name, value: item.user_type_id,
+      index: idx, label: item.user_type_name, value: item.user_type_code,
     }))]
     const user_active = [
       { label: 'ทำงาน', value: '0', },
@@ -286,8 +286,8 @@ class Update extends Component {
                   <label>สิทธิ์การใช้งาน<font color="#F00"><b> *</b></font></label>
                   <Select
                     options={user_types}
-                    value={this.state.user_type_id}
-                    onChange={(e) => this.setState({ user_type_id: e })}
+                    value={this.state.user_type_code}
+                    onChange={(e) => this.setState({ user_type_code: e })}
                   />
                 </div>
                 <div className="col-lg-6">

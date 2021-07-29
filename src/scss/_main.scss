@@ -161,9 +161,12 @@ nav > ul > li > a.active {
   padding: 0.75rem 1rem;
   font-size: 0.95rem;
   background-color: #fff !important;
-  color: #1a1717 !important;
+  color: #1a1717;
 }
-.sidebar-title-list { 
+.sidebar-list.active {
+  color: #4d8af0 !important;
+}
+.sidebar-title-list {
   padding: 0.55rem 0.65rem;
   font-size: 0.95rem;
   background-color: #c7c5c5 !important;
